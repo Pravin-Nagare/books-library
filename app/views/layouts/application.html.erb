@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Library</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="span9"><%= yield %></div>
+    <div class="span3">
+      <h2>Recommendation goes here</h2>
+      <p>
+      </p>	
+    </div>
+  </div>
+</div>
+
+<div class="navbar navbar-fixed-top">  
+  <div class="navbar-inner">  
+    <div class="container">  
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".collapse">  
+        <span class="icon-bar"></span>  
+        <span class="icon-bar"></span>  
+        <span class="icon-bar"></span>  
+      </a>  
+      <a class="brand" href="#">Some Store</a>  
+      <div class="nav-collapse">  
+        <ul class="nav">  
+          <li><%= link_to "Browse Books", books_path %></li>  
+          <li><%= link_to "Contact Us" %></li>  
+        </ul>  
+      </div>  
+    </div>  
+  </div>  
+</div>  
+
+</body>
+</html>

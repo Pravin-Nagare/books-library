@@ -1,0 +1,5 @@
+Requires:
+
+Ruby 1.9.X
+Rails 3.2.X
+twitter-bootstrap
