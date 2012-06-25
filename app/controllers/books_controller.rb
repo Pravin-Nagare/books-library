@@ -15,6 +15,8 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     detail=Openlibrary::Data
+    view = Openlibrary::View
+    @book_view = view.find_by_isbn(@book.isbn)
     @details = detail.find_by_isbn(@book.isbn)
     respond_to do |format|
       format.html # show.html.erb
