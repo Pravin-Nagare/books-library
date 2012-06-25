@@ -1,6 +1,26 @@
-<%- model_class = @book.class -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human,
-                                   :default => "Edit #{model_class.model_name.human}") %></h1>
+<h1>You may like :</h1>
+
+<table>
+<tr>
+	<td><b>ISBN</b></td>
+	<td>  </td>
+	<td><b>Title</b></td>
+</tr>
+<% @liked.each do |book|%>
+<tr>
+	<td><%= book.isbn %></td>
+	<td>  </td>
+	<td><%= book.title %></td>
+<%end%>
+</table>
+
+<p>
+  <b>Number Of Recomomndet books : </b>
+  <%= @liked.length %>
+</p>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              books_path, :class => 'btn'  %>
 </div>
-<%= render :partial => 'form' %>
+

@@ -5,10 +5,13 @@ gem 'rails', '3.2.5'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-gem 'pg'
-gem 'therubyracer'
+gem 'sqlite3', :group => [:development, :test]
+group :production do
+  gem 'thin'
+  gem 'pg'
+end
 
+gem 'therubyracer'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,8 +23,11 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+  gem 'jquery-ui-rails'
   gem 'twitter-bootstrap-rails'
    gem 'less'
+   
 end
 gem 'openlibrary', '~>0.0.8'
 

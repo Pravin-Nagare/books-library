@@ -1,4 +1,3 @@
-
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
@@ -41,9 +40,28 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(params[:user])
-
-    respond_to do |format|
+  
+    @user = User.find_by_email(params[:email])
+    puts "---------------------------------------",@users.class
+    if(@user!=nil)
+    	session[:email] = @user.email
+    	redirect_to books_path, notice: 'User was successfully logged in.'
+    else
+        @user = User.create(:email=>params[:email])	
+    
+      respond_to do |format|
+      if @user.save
+      	session[:email] = @user.email
+        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.json { render json: @user, status: :created, location: @user }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+    end
+    
+=begin    respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
@@ -52,6 +70,7 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+=end
   end
 
   # PUT /users/1

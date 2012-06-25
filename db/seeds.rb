@@ -5,9 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-file=File.open("db/isbn.csv")
-content=file.read.split
-content.each do |i|
-	Book.create(:isbn=>i) unless i=="ISBN"
+isbn=File.open("db/isbn.csv","r").read.split
+detail=Openlibrary::Data
+isbn.each do |i|
+  if(i!="ISBN")
+   begin
+    title = detail.find_by_isbn(i).title
+    Book.create :isbn=>i,:title=>title
+   rescue Exception=>e
+   	puts e.message
+   end
+   
+   end
 end

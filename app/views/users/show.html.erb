@@ -1,10 +1,11 @@
-<p id="notice"><%= notice %></p>
+<p>Your account has been successfully created with:<br /></p>
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
+<%- model_class = @user.class -%>
 
+<dl class="dl-horizontal">
+  <dt><strong>Email ID:</strong></dt>
+  <dd><%= @user.email %></dd>
+</dl>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+Click Here to enter
+<%= link_to "Home", books_path %>

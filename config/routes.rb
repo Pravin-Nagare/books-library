@@ -1,4 +1,4 @@
-Library::Application.routes.draw do
+MyLibrary::Application.routes.draw do
   resources :books
 
   resources :users

@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Library::Application.load_tasks
+MyLibrary::Application.load_tasks
