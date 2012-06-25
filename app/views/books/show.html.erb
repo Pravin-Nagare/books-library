@@ -8,6 +8,26 @@
   <dd><%= @book.isbn %></dd>
   <dt><strong><%= model_class.human_attribute_name(:Title) %>:</strong></dt>
   <dd><%= @book.title %></dd>
+  <dt><strong>Authors:</strong></dt>
+  <dd><% @details.authors.each do |author| %>
+	  <%= author["name"] %>
+  	<%end %></dd>
+
+  <dt><strong>Info URL:</strong></dt>
+  <dd><%= @book_view.info_url %></dd>
+ 
+  <dt><strong>Total Pages:</strong></dt>
+  <dd><%= @details.pages %></dd>
+  
+  <dt><strong>Publish Date:</strong></dt>
+  <dd><%= @details.publish_date %></dd>
+  
+  <dt><strong>Publish Place:</strong></dt>
+  <dd><% @details.publish_places.each do |place| %>
+	  <%= place["name"] %>
+  	<%end %></dd>
+
+
 </dl>
 
 <div class="form-actions">
